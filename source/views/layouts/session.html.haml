@@ -1,0 +1,15 @@
+.container
+  .navbar-header
+    %button.navbar-toggle.collapsed{type: "button", "data-toggle"=>"collapse", "data-target"=>".navbar-collapse"}
+      %span.sr-only Toggle navigation
+    %a.navbar-brand{"ui-sref"=>"home"} ACL Framework
+  .navbar-collapse.collapse
+    %form.navbar-form.navbar-right{"ng-controller"=>"SessionsController", "ng-submit"=>"signIn()", "ng-show"=>"!current_user"}
+      .form-group
+        %input.form-control{type: "text", placeholder: "Username", "ng-model"=>"user.username"}
+      .form-group
+        %input.form-control{type: "password", placeholder: "Password", "ng-model"=>"user.password"}
+      %button.btn.btn-success{type: "submit"} Sign in
+    .navbar-text.navbar-right{"ng-show"=>"current_user"} Welcome, {{current_user.username}}!
+
+

@@ -1,0 +1,7 @@
+.form-group
+  %label Title
+  %input.form-control{placeholder: "Title", type: "text", "ng-model"=>"page.title"}
+.form-group
+  %label Content
+  %textarea.form-control{rows: 5, placeholder: "Content", "ng-model"=>"page.content"}
+%button.btn.btn-default{type: "submit"} Submit

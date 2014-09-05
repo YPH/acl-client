@@ -1,0 +1,16 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %td #
+      %td Title
+      %td Content
+  %tbody
+    %tr{"ng-repeat"=>"page in pages", "ui-sref"=>"page({id: page._id})"}
+      %td
+        {{$index + 1}}
+      %td
+        {{page.title}}
+      %td
+        {{page.content}}
+
+%button.btn.btn-success{"ng-if"=>"current_user", type: "submit", "ui-sref"=>"new-page"} New

@@ -1,0 +1,12 @@
+.span12
+  %h1
+    {{page.title}}
+
+  {{page.content}}
+
+
+%hr
+
+
+%button.btn.btn-warning{"ng-if"=>"canEdit()", type: "submit", "ui-sref"=>"edit-page"} Edit
+%button.btn.btn-danger{"ng-if"=>"canDestroy()", type: "submit", "ng-click"=>"destroy()"} Delete

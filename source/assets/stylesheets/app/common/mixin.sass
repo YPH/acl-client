@@ -1,0 +1,45 @@
+@mixin box_sizing
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+@mixin gradient($color1, $color2)
+  background: -webkit-gradient(linear, left top, left bottom, from($color1), to($color2))
+  background: -webkit-linear-gradient(top, $color1, $color2)
+  background: -moz-linear-gradient(top, $color1, $color2)
+  background: -ms-linear-gradient(top, $color1, $color2)
+  background: -o-linear-gradient(top, $color1, $color2)
+  -ms-filter: "filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$color1', endColorstr='$color2')"
+
+@mixin rounded-corners($radius: 5px)
+  border-radius: $radius
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+
+@mixin rounded-top-corners($radius: 5px)
+  border-top-left-radius: $radius
+  border-top-right-radius: $radius
+  -moz-border-top-left-radius: $radius
+  -moz-border-top-right-radius: $radius
+  -webkit-border-top-left-radius: $radius
+  -webkit-border-top-right-radius: $radius
+
+@mixin rounded-bottom-corners($radius: 5px)
+  border-bottom-left-radius: $radius
+  border-bottom-right-radius: $radius
+  -moz-border-bottom-left-radius: $radius
+  -moz-border-bottom-right-radius: $radius
+  -webkit-border-bottom-left-radius: $radius
+  -webkit-border-bottom-right-radius: $radius
+
+@mixin circular
+  @include rounded-corners(50%)
+  
+@mixin shadow($spread: 1px, $thickness: 5px, $color: black)
+  -webkit-box-shadow: 0 $spread $thickness $color
+  -moz-box-shadow: 0 $spread $thickness $color
+  box-shadow: 0 $spread $thickness $color
+
+@mixin opacity($o: 1)
+  opacity: $o
+  filter: alpha(opacity= $o * 100)
