@@ -62,20 +62,23 @@ app.controller "PageController",
         }
       , (data) ->
         $scope.permission = data.permission_code
+        $scope.updatePrivileges()
       , (data) ->
         {}
-      ) 
+      )
+    else
+      $scope.permission = Permit.level.none
+      $scope.updatePrivileges()
 
-  $scope.canEdit = () ->
-    $scope.permission >= Permit.level.write
-
-  $scope.canDestroy = () ->
-    $scope.permission >= Permit.level.destroy
+  $scope.updatePrivileges = () ->
+    $scope.canEdit = $scope.permission >= Permit.level.write
+    $scope.canDestroy = $scope.permission >= Permit.level.destroy
 
   $scope.$watch('page', () ->
     $scope.checkPermission()
   )
-  $scope.$watch('current_user', ()->
+
+  $rootScope.$watch('current_user', ()->
     $scope.checkPermission()
   )
 ]
