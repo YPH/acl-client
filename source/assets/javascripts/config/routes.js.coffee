@@ -50,6 +50,14 @@ app.config (["$stateProvider", "$urlRouterProvider", "$locationProvider", "$http
       views:
         "content":
           templateUrl: "views/pages/show.html"
-          controller: "PageController"  
+          controller: "PageController"
+
+    .state "calendar",
+      parent: "main_layout"
+      url: "/calendar"
+      views:
+        "content":
+          templateUrl: "views/calendars/index.html"
+          controller: "CalendarsController"  
 ])
 
