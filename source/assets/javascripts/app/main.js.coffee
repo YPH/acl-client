@@ -1,1 +1,1 @@
-@app = angular.module("ACL", ["ngResource", "ui.router", "ngSanitize", "ngTouch", "ngCookies"])
+@app = angular.module("ACL", ["ngResource", "ui.router", "ngSanitize", "ngTouch", "ngCookies", "ui.bootstrap"])

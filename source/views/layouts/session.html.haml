@@ -10,8 +10,7 @@
       .form-group
         %input.form-control{type: "password", placeholder: "Password", "ng-model"=>"user.password"}
       %button.btn.btn-success{type: "submit"} Sign in
+      %button.btn.btn-success{"ui-sref"=>"signup"} Sign Up
     .navbar-text.navbar-right{"ng-show"=>"current_user"}
       Welcome, {{current_user.username}}!
       %button.btn.btn-warning{"ng-click"=>"signOut()"} Sign Out
-
-

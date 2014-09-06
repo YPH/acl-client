@@ -1,0 +1,8 @@
+%form{"ng-submit"=>"create()"}
+  .form-group
+    %label Username
+    %input.form-control{placeholder: "Username", type: "text", "ng-model"=>"user.username"}
+  .form-group
+    %label Password
+    %input.form-control{placeholder: "Password", type: "password", "ng-model"=>"user.password"}
+  %button.btn.btn-default{type: "submit"} Create

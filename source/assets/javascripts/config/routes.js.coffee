@@ -20,13 +20,13 @@ app.config (["$stateProvider", "$urlRouterProvider", "$locationProvider", "$http
           templateUrl: "views/pages/index.html"
           controller: "PagesController"
 
-    .state "login",
+    .state "signup",
       parent: "main_layout"
-      url: "/login"
+      url: "/signup"
       views:
         "content":
-          templateUrl: "views/sessions/login.html"
-          controller: "SessionsController"
+          templateUrl: "views/sessions/signup.html"
+          controller: "UsersController"
 
     .state "edit-page",
       parent: "main_layout"

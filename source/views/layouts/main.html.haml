@@ -1,2 +1,4 @@
 .navbar.navbar-inverse1.navbar-fixed-top{"ui-view" => "session"}
+.container
+  %alert{"ng-repeat"=>"alert in alerts", type: "{{alert.type}}", "close"=>"closeAlert($index)"} {{alert.msg}}
 .container{"ui-view" => "content"}

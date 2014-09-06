@@ -10,6 +10,7 @@
 // require vendor/jquery.mobile-1.3.2.min.js
 //= require vendor/jquery-2.0.3.min.js
 //= require bootstrap-sprockets
+//= require vendor/ui-bootstrap-tpls-0.11.0.min.js
 
 // Application
 //= require app/main
