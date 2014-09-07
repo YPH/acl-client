@@ -55,9 +55,10 @@ app.controller "PageController",
 
   $scope.checkPermission = () ->
     if $scope.page && $scope.page._id && $scope.current_user
-      Permit.page.get(
+      Permit.all.get(
         {
           id: $scope.page._id
+          resource_name: "Page"
           token: $scope.current_user.token
         }
       , (data) ->

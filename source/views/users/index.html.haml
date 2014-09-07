@@ -1,0 +1,17 @@
+%h1
+  Users
+
+%table.table.table-hover
+  %thead
+    %tr
+      %td #
+      %td Username
+      %td Token
+  %tbody
+    %tr{"ng-repeat"=>"user in users"}
+      %td
+        {{$index + 1}}
+      %td
+        {{user.username}}
+      %td
+        {{user.token}}

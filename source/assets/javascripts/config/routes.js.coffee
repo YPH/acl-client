@@ -26,7 +26,7 @@ app.config (["$stateProvider", "$urlRouterProvider", "$locationProvider", "$http
       views:
         "content":
           templateUrl: "views/sessions/signup.html"
-          controller: "UsersController"
+          controller: "UserController"
 
     .state "edit-page",
       parent: "main_layout"
@@ -58,6 +58,22 @@ app.config (["$stateProvider", "$urlRouterProvider", "$locationProvider", "$http
       views:
         "content":
           templateUrl: "views/calendars/index.html"
-          controller: "CalendarsController"  
+          controller: "CalendarsController"
+
+    .state "admin",
+      parent: "main_layout"
+      url: "/admin"
+      views:
+        "content":
+          templateUrl: "views/admin/index.html"
+          #controller: "CalendarsController"
+
+    .state "users",
+      parent: "main_layout"
+      url: "/users"
+      views:
+        "content":
+          templateUrl: "views/users/index.html"
+          controller: "UsersController"  
 ])
 

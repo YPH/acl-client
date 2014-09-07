@@ -1,0 +1,33 @@
+%h1
+  Admin Page
+
+%h3 Roles
+
+%table.table.table-hover{"ng-controller"=>"RolesController"}
+  %thead
+    %tr
+      %td #
+      %td Role
+  %tbody
+    %tr{"ng-repeat"=>"role in roles"}
+      %td
+        {{$index + 1}}
+      %td
+        {{role.name}}
+
+
+
+%table.table.table-hover{"ng-controller"=>"UsersController"}
+  %thead
+    %tr
+      %td #
+      %td Username
+      %td Token
+  %tbody
+    %tr{"ng-repeat"=>"user in users"}
+      %td
+        {{$index + 1}}
+      %td
+        {{user.username}}
+      %td
+        {{user.token}}

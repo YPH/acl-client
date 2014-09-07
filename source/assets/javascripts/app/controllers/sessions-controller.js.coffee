@@ -1,6 +1,23 @@
 app.controller "SessionsController", 
-["$scope", "$timeout",  "$rootScope", "$cookies", "$cookieStore", "$location", "$state", "$http", "Session",
-($scope, $timeout, $rootScope, $cookies, $cookieStore, $location, $state, $http, Session) -> 
+["$scope", "$rootScope", "$state", "Session", "Permit",
+($scope, $rootScope, $state, Session, Permit) ->
+  $scope.permissions = {}
+
+  $scope.checkPermissions = (resource_name) ->
+    if $rootScope.current_user
+      Permit.all.get(
+        {
+          resource_name: resource_name
+          token: $scope.current_user.token
+        }
+      , (data) ->
+        $scope.permissions[resource_name] = data.permission_code
+      , (data) ->
+        {}
+      )
+    else
+      $scope.permissions = {}
+
   $scope.signIn = () ->
     Session.signIn.save(
       {}
@@ -18,6 +35,12 @@ app.controller "SessionsController",
     )
 
   $scope.signOut = () ->
-    $rootScope.current_user = null
     #TODO: Destroy token on server side
+    $rootScope.current_user = null
+    $state.transitionTo("home")
+
+  $rootScope.$watch('current_user', ()->
+    $scope.checkPermissions("admin")
+    $scope.checkPermissions("users")
+  )
 ]
