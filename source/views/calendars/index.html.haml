@@ -1,4 +1,8 @@
 %h1
   My Calendar
 
-Calendar ID is {{calendar._id}} and the owner is {{calendar.user.username}}
+%p
+  Calendar ID is {{calendar._id}} and the owner is {{current_user.username}}.
+
+%p
+  A calendar is created when an user account is created. In this case the API controllers retreives the calendar that's owned by the user.

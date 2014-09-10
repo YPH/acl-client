@@ -12,4 +12,17 @@ app.controller "UsersController",
   , (data) ->
     {}
   )
+
+  $scope.destroy = (index) ->
+    User.delete(
+      {
+        id: $scope.users[index]._id
+        token: $scope.current_user.token
+      },
+    , (data) ->
+      if data.status == 0
+        $scope.users.splice(index, 1)
+    , (data) ->
+      {}
+    )
 ]

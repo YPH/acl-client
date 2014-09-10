@@ -1,10 +1,15 @@
 app.controller "PageController", 
 ["$scope", "$rootScope", "$stateParams", "$cookieStore", "$location", "$state", "Page", "Permit",
 ($scope, $rootScope, $stateParams, $cookieStore, $location, $state, Page, Permit) -> 
+  $state.transitionTo("home") if !$scope.current_user
+
   $scope.page = {}
 
   Page.get(
-    {id: $stateParams.id}
+    {
+      id: $stateParams.id
+      token: $scope.current_user.token
+    }
   , (data) ->
     $scope.page = data.data
   , (data) ->

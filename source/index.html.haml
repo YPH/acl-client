@@ -9,7 +9,9 @@
     %link{href: "assets/stylesheets/fontello.css", rel: "stylesheet", type: "text/css"}
     %link{href: "assets/stylesheets/animation.css", rel: "stylesheet", type: "text/css"}
 
+    %script{src:"http://underscorejs.org/underscore-min.js"}
     %script{src:"assets/javascripts/application.js"}
     %script{src:"assets/javascripts/config/environments/#{environment}.js"}
+    
 %body
   .template{"ui-view" => "template", "ng-controller"=>"AlertController"}
