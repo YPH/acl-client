@@ -1,3 +1,3 @@
 app.constant "CONFIG",
   API_SERVER:
-    "http://gokodo-dev.herokuapp.com"
+    "http://hidden-falls-1651.herokuapp.com"
