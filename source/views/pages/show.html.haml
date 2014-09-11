@@ -10,3 +10,19 @@
 
 %button.btn.btn-warning{"ng-if"=>"canEdit", type: "submit", "ui-sref"=>"edit-page"} Edit
 %button.btn.btn-danger{"ng-if"=>"canDestroy", type: "submit", "ng-click"=>"destroy()"} Delete
+
+
+
+.container{"ng-if"=>"canDestroy"}
+  %hr
+  %h4 Assign Editor - Editors can edit and view the post
+
+  %form{name: "editorForm", "ng-controller"=>"EditorsController", "ng-submit"=>"assignEditor(page)"}
+    .row
+      .form-group.col-xs-3
+        %label User
+        %select.form-control{"ng-model"=>"user_id", "ng-options"=>"user._id as user.username for user in users"}
+      .form-group.col-xs-3
+        %label Action
+        .row
+          %button.btn.btn-default{type: "submit"} Assign

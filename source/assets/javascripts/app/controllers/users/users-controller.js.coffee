@@ -1,11 +1,8 @@
 app.controller "UsersController", 
 ["$scope", "$rootScope", "$location", "$state", "User",
-($scope, $rootScope, $location, $state, User) -> 
-  $state.transitionTo("home") if !$scope.current_user
-  
+($scope, $rootScope, $location, $state, User) ->  
   User.get(
     {
-      token: $rootScope.current_user.token
     }
   , (data) ->
     $scope.users = data.data
@@ -24,5 +21,5 @@ app.controller "UsersController",
         $scope.users.splice(index, 1)
     , (data) ->
       {}
-    )
+    ) if $scope.current_user
 ]

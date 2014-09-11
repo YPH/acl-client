@@ -70,44 +70,45 @@
 
   %hr
 
-  %h3 Resource Roles
-  %div{"ng-controller"=>"ResourceRolesController"}
-    %table.table.table-hover
-      %thead
-        %tr
-          %td #
-          %td Resourceable Type
-          %td User ID
-          %td Role
-          %td Action
-      %tbody
-        %tr{"ng-repeat"=>"resource_role in resource_roles || true || (!resource_role.resourceable_id && role_name(resource_role.role) != 'admin')"}
-          %td
-            {{$index + 1}}
-          %td
-            {{resource_role.resourceable_type}}
-          %td
-            {{resource_role.user}}
-          %td
-            {{role_name(resource_role.role)}}
-          %td
-            %button.btn.btn-default{"ng-click"=>"destroy($index)"} Delete
-    /TODO: Form validation
-    %form{name: "resourceroleForm", "ng-controller"=>"ResourceRoleController", "ng-submit"=>"create(resource_role)"}
-      .row
-        .form-group.col-xs-3
-          %label Role
-          %select.form-control{"ng-init"=>"privilege.role = roles[0]",  "ng-model"=>"resource_role.role", "ng-options"=>"role._id as role.name for role in roles"}
-        .form-group.col-xs-3
-          %label Resourceable Type
-          %input.form-control{placeholder: "Resourceable Type", type: "text", "ng-model"=>"resource_role.resourceable_type"}
-        .form-group.col-xs-3
-          %label User ID
-          %input.form-control{placeholder: "User ID", type: "text", "ng-model"=>"resource_role.user"}
-        .form-group.col-xs-3
-          %label Action
-          .row
-            %button.btn.btn-default{type: "submit"} Submit
+  - if false
+    %h3 Resource Roles
+    %div{"ng-controller"=>"ResourceRolesController"}
+      %table.table.table-hover
+        %thead
+          %tr
+            %td #
+            %td Resourceable Type
+            %td User ID
+            %td Role
+            %td Action
+        %tbody
+          %tr{"ng-repeat"=>"resource_role in resource_roles  && (!resource_role.resourceable_id && role_name(resource_role.role) != 'admin')"}
+            %td
+              {{$index + 1}}
+            %td
+              {{resource_role.resourceable_type}}
+            %td
+              {{resource_role.user}}
+            %td
+              {{role_name(resource_role.role)}}
+            %td
+              %button.btn.btn-default{"ng-click"=>"destroy($index)"} Delete
+      /TODO: Form validation
+      %form{name: "resourceroleForm", "ng-controller"=>"ResourceRoleController", "ng-submit"=>"create(resource_role)"}
+        .row
+          .form-group.col-xs-3
+            %label Role
+            %select.form-control{"ng-init"=>"privilege.role = roles[0]",  "ng-model"=>"resource_role.role", "ng-options"=>"role._id as role.name for role in roles"}
+          .form-group.col-xs-3
+            %label Resourceable Type
+            %input.form-control{placeholder: "Resourceable Type", type: "text", "ng-model"=>"resource_role.resourceable_type"}
+          .form-group.col-xs-3
+            %label User ID
+            %input.form-control{placeholder: "User ID", type: "text", "ng-model"=>"resource_role.user"}
+          .form-group.col-xs-3
+            %label Action
+            .row
+              %button.btn.btn-default{type: "submit"} Submit
 
   %h3 Users
   %table.table.table-hover{"ng-controller"=>"UsersController"}
