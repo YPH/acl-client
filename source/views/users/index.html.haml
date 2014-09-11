@@ -18,4 +18,4 @@
         {{user.token}}
       %td
         %button.btn.btn-default{"ng-if"=>"current_user.username != user.username", "ng-click"=>"destroy($index)"} Remove
-
+        %button.btn.btn-default{"ui-sref"=>"password({user_id: user._id})"} Change Password

@@ -1,0 +1,11 @@
+%h1 Change Password
+
+%form{name: "passwordForm", "ng-controller"=>"PasswordController", "ng-submit"=>"update()"}
+  .row
+    .form-group.col-xs-3
+      %label Password
+      %input.form-control{placeholder: "New Password", type: "password", "ng-model"=>"password"}
+    .form-group.col-xs-3
+      %label Action
+      .row
+        %button.btn.btn-default{type: "submit"} Update

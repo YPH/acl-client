@@ -60,6 +60,14 @@ app.config (["$stateProvider", "$urlRouterProvider", "$locationProvider", "$http
           templateUrl: "views/calendars/index.html"
           controller: "CalendarsController"
 
+    .state "password",
+      parent: "main_layout"
+      url: "/password?user_id"
+      views:
+        "content":
+          templateUrl: "views/passwords/edit.html"
+          #controller: "PasswordController"
+
     .state "admin",
       parent: "main_layout"
       url: "/admin"
