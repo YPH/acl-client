@@ -1,28 +1,44 @@
-.span12
-  %h1
-    {{page.title}}
+.container
+  .col-xs-6
+    %h1
+      {{page.title}}
 
-  {{page.content}}
+    {{page.content}}
 
+    %hr
+    %h2 Comments
+    %div{"ng-controller"=>"CommentsController", "ng-if"=>"page._id", "ng-init"=>"init(page)"}
+      %table.table.table-hover
+        %tbody
+          %tr{"ng-repeat"=>"comment in comments"}
+            %td
+              "{{comment.content}}"
+              %span{"ng-if"=>"!comment.user"} by anonymous
+              %span{"ng-if"=>"comment.user"} by user ID {{comment.user}}
 
-%hr
+      %form{name: "commentsForm", "ng-submit"=>"create(page)"}
+        .form-group
+          %label Content
+          %textarea.form-control{rows: 5, placeholder: "Comment", "ng-model"=>"comment_content"}
+        .form-group
+          %button.btn.btn-default{type: "submit"} Submit
 
+  .col-xs-6
+    .container{"ng-if"=>"canEdit"}
+      %h4 Control
+      %button.btn.btn-warning{"ng-if"=>"canEdit", type: "submit", "ui-sref"=>"edit-page"} Edit
+      %button.btn.btn-danger{"ng-if"=>"canDestroy", type: "submit", "ng-click"=>"destroy()"} Delete
 
-%button.btn.btn-warning{"ng-if"=>"canEdit", type: "submit", "ui-sref"=>"edit-page"} Edit
-%button.btn.btn-danger{"ng-if"=>"canDestroy", type: "submit", "ng-click"=>"destroy()"} Delete
+    .container{"ng-if"=>"canDestroy"}
+      %hr
+      %h4 Assign Editor - editors can only edit
 
-
-
-.container{"ng-if"=>"canDestroy"}
-  %hr
-  %h4 Assign Editor - Editors can edit and view the post
-
-  %form{name: "editorForm", "ng-controller"=>"EditorsController", "ng-submit"=>"assignEditor(page)"}
-    .row
-      .form-group.col-xs-3
-        %label User
-        %select.form-control{"ng-model"=>"user_id", "ng-options"=>"user._id as user.username for user in users"}
-      .form-group.col-xs-3
-        %label Action
+      %form{name: "editorForm", "ng-controller"=>"EditorsController", "ng-submit"=>"assignEditor(page)"}
         .row
-          %button.btn.btn-default{type: "submit"} Assign
+          .form-group.col-xs-3
+            %label User
+            %select.form-control{"ng-model"=>"user_id", "ng-options"=>"user._id as user.username for user in users | filter: '!' + page.user"}
+          .form-group.col-xs-3
+            %label Action
+            .row
+              %button.btn.btn-default{type: "submit"} Assign
